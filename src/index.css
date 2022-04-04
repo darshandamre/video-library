@@ -40,7 +40,7 @@
   --error: #ff0000;
   --error-bg: #ff00000d;
 
-  /* font-size: 75%; */
+  font-size: 75%;
 }
 
 body {
@@ -88,22 +88,22 @@ a {
 }
 
 /* larger than 480px */
-/* @media only screen and (min-width: 30em) {
+@media only screen and (min-width: 30em) {
   :root {
     font-size: 90%;
   }
-} */
+}
 
 /* larger than 768px */
-/* @media only screen and (min-width: 48em) {
+@media only screen and (min-width: 48em) {
   :root {
     font-size: 100%;
   }
-} */
+}
 
 /* larger than 1536px */
-/* @media only screen and (min-width: 96em) {
+@media only screen and (min-width: 96em) {
   :root {
     font-size: 120%;
   }
-} */
+}

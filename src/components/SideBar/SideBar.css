@@ -1,19 +1,46 @@
 .sidebar {
-  display: none;
   background-color: var(--zinc);
-  height: calc(100vh - 4.5rem);
-
-  position: sticky;
-  top: 4.5rem;
-  overflow-y: auto;
+  position: absolute;
+  width: 18rem;
+  height: 100vh;
+  z-index: 10;
+  transform: translateX(-18rem);
+  transition: all 0.3s ease-in-out;
 
   grid-area: sidebar;
 }
 
-.sidebar--visible {
-  display: block;
+.show-sidebar .sidebar {
+  transform: translateX(0);
+}
+
+.show-sidebar .overlay {
+  position: absolute;
+  inset: 0;
+  background-color: var(--overlay);
 }
 
 .selected-tab {
   background-color: var(--zinc-light);
+}
+
+/* larger than 800px */
+@media (min-width: 50rem) {
+  .sidebar {
+    height: calc(100vh - 4.5rem);
+    width: auto;
+    transform: translateX(0);
+
+    position: sticky;
+    top: 4.5rem;
+    overflow-y: auto;
+  }
+
+  .sidebar__header {
+    display: none;
+  }
+
+  .show-sidebar .overlay {
+    display: none;
+  }
 }

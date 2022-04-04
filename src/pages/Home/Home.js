@@ -3,13 +3,15 @@ import { Chips, Header, SideBar, VideoList } from "../../components";
 import "./Home.css";
 
 const Home = () => {
-  const [showSidebar, setShowSidebar] = useState(true);
+  const [showSidebar, setShowSidebar] = useState(false);
+
+  const toggleSidebar = () => setShowSidebar(v => !v);
 
   return (
     <div className={`home ${showSidebar ? "show-sidebar" : ""}`}>
-      <Header setShowSidebar={setShowSidebar} />
+      <Header toggleSidebar={toggleSidebar} />
       <Chips />
-      <SideBar showSidebar={showSidebar} />
+      <SideBar toggleSidebar={toggleSidebar} />
       <VideoList />
     </div>
   );

@@ -7,11 +7,17 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 1.5rem;
 }
 
 .logo {
   font-family: "Orbitron", sans-serif;
-  font-size: 2rem;
+  font-size: 1.75rem;
   line-height: 2.5rem;
+}
+
+/* larger than 800px */
+@media (min-width: 50rem) {
+  .header .menu {
+    display: none;
+  }
 }
