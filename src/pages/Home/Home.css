@@ -1,0 +1,14 @@
+.home {
+  display: grid;
+  grid-template-areas: "header" "chips" "video-list";
+
+  align-items: start;
+}
+
+.show-sidebar {
+  grid-template-columns: 14rem 1fr;
+  grid-template-areas:
+    "header header"
+    "sidebar chips"
+    "sidebar video-list";
+}

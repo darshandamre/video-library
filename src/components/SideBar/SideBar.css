@@ -1,0 +1,19 @@
+.sidebar {
+  display: none;
+  background-color: var(--zinc);
+  height: calc(100vh - 4.5rem);
+
+  position: sticky;
+  top: 4.5rem;
+  overflow-y: auto;
+
+  grid-area: sidebar;
+}
+
+.sidebar--visible {
+  display: block;
+}
+
+.selected-tab {
+  background-color: var(--zinc-light);
+}
