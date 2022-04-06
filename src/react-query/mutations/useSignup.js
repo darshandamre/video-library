@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useMutation } from "react-query";
 import { setToken } from "../../utils/token";
+import { queryClient } from "../client";
 
 export const useSignup = () =>
   useMutation(
@@ -10,6 +11,9 @@ export const useSignup = () =>
     },
     {
       onError: err => console.error(err),
-      onSuccess: ({ encodedToken, createdUser }) => setToken(encodedToken)
+      onSuccess: ({ encodedToken, createdUser }) => {
+        setToken(encodedToken);
+        queryClient.setQueryData("user", { user: createdUser });
+      }
     }
   );

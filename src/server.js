@@ -38,6 +38,7 @@ import {
   getWatchLaterVideosHandler,
   removeItemFromWatchLaterVideos,
 } from "./backend/controllers/WatchLaterController";
+import { getUserHandler } from "./backend/controllers/UserController";
 export function makeServer({ environment = "development" } = {}) {
   return new Server({
     serializers: {
@@ -88,6 +89,9 @@ export function makeServer({ environment = "development" } = {}) {
       // categories routes (public)
       this.get("/categories", getAllCategoriesHandler.bind(this));
       this.get("/categories/:categoryId", getCategoryHandler.bind(this));
+
+      // user routes (private)
+      this.get('/user', getUserHandler.bind(this));
 
       // likes routes (private)
       this.get("/user/likes", getLikedVideosHandler.bind(this));
