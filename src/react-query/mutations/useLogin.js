@@ -6,7 +6,7 @@ import { queryClient } from "../client";
 export const useLogin = () =>
   useMutation(
     async body => {
-      const res = await axios.post(`api/auth/login`, body);
+      const res = await axios.post("api/auth/login", body);
       return res.data;
     },
     {

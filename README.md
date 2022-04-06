@@ -1,3 +1,3 @@
 ## 52 streams
 
-A video library of cardistry videos
+A library of cardistry videos
