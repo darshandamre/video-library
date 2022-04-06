@@ -17,8 +17,8 @@ const Header = ({ toggleSidebar }) => {
       </div>
 
       <div className="header__actions flex">
-        <Link to="/signup" className="btn btn--primary m-0">
-          SignUp
+        <Link to="/login" className="btn btn--primary m-0">
+          Login
         </Link>
       </div>
     </header>
