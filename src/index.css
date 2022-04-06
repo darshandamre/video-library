@@ -14,6 +14,9 @@
   --secondary-light: #544ff3;
   --secondary-extra-light: #544ff360;
 
+  --neutral-300: #d4d4d4;
+  --neutral-200: #e5e5e5;
+
   /* color for code snippets */
   --white-code: #ffffffcc;
   --blue-code: #12b0e8;
