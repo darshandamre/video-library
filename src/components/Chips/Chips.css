@@ -1,0 +1,20 @@
+.chips {
+  display: flex;
+  background-color: var(--zinc);
+  border-top: 1px solid var(--grey);
+  border-bottom: 1px solid var(--grey);
+
+  position: sticky;
+  top: 4.5rem;
+
+  grid-area: chips;
+}
+
+.chips__item {
+  border-radius: 100vh;
+  border: 1px solid var(--black);
+}
+
+.chips__item--selected {
+  background-color: var(--white);
+}

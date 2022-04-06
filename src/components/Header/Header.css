@@ -1,0 +1,23 @@
+.header {
+  position: sticky;
+  top: 0;
+  background: var(--zinc);
+
+  grid-area: header;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.75rem;
+  line-height: 2.5rem;
+}
+
+/* larger than 800px */
+@media (min-width: 50rem) {
+  .header .menu {
+    display: none;
+  }
+}

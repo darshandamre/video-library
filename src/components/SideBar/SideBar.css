@@ -1,0 +1,46 @@
+.sidebar {
+  background-color: var(--zinc);
+  position: absolute;
+  width: 18rem;
+  height: 100vh;
+  z-index: 10;
+  transform: translateX(-18rem);
+  transition: all 0.3s ease-in-out;
+
+  grid-area: sidebar;
+}
+
+.show-sidebar .sidebar {
+  transform: translateX(0);
+}
+
+.show-sidebar .overlay {
+  position: absolute;
+  inset: 0;
+  background-color: var(--overlay);
+}
+
+.selected-tab {
+  background-color: var(--zinc-light);
+}
+
+/* larger than 800px */
+@media (min-width: 50rem) {
+  .sidebar {
+    height: calc(100vh - 4.5rem);
+    width: auto;
+    transform: translateX(0);
+
+    position: sticky;
+    top: 4.5rem;
+    overflow-y: auto;
+  }
+
+  .sidebar__header {
+    display: none;
+  }
+
+  .show-sidebar .overlay {
+    display: none;
+  }
+}
