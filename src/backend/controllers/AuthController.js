@@ -23,7 +23,12 @@ export const signupHandler = function (schema, request) {
         422,
         {},
         {
-          errors: ["Unprocessable Entity. Email Already Exists."],
+          errors: [
+            {
+              field: "email",
+              message: "email has already been taken"
+            }
+          ]
         }
       );
     }
@@ -38,7 +43,7 @@ export const signupHandler = function (schema, request) {
       likes: [],
       history: [],
       playlists: [],
-      watchlater: [],
+      watchlater: []
     };
     const createdUser = schema.users.create(newUser);
     const encodedToken = sign({ _id, email }, process.env.REACT_APP_JWT_SECRET);
@@ -48,7 +53,7 @@ export const signupHandler = function (schema, request) {
       500,
       {},
       {
-        error,
+        error
       }
     );
   }
@@ -68,7 +73,14 @@ export const loginHandler = function (schema, request) {
       return new Response(
         404,
         {},
-        { errors: ["The email you entered is not Registered. Not Found error"] }
+        {
+          errors: [
+            {
+              field: "email",
+              message: "user not found"
+            }
+          ]
+        }
       );
     }
     if (password === foundUser.password) {
@@ -84,8 +96,11 @@ export const loginHandler = function (schema, request) {
       {},
       {
         errors: [
-          "The credentials you entered are invalid. Unauthorized access error.",
-        ],
+          {
+            field: "password",
+            message: "incorrect credentials"
+          }
+        ]
       }
     );
   } catch (error) {
@@ -93,7 +108,7 @@ export const loginHandler = function (schema, request) {
       500,
       {},
       {
-        error,
+        error
       }
     );
   }

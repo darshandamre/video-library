@@ -1,22 +1,64 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { InputField } from "../../components";
+import { useForm } from "../../hooks/useForm";
+import { useSignup } from "../../react-query/mutations/useSignup";
+import { toErrorMap } from "../../utils/toErrorMap";
+import { signupValidator } from "../../utils/validator";
 import "./Auth.css";
 
+const initialSignupData = {
+  name: "",
+  email: "",
+  password: ""
+};
+
 const SignUp = () => {
+  const {
+    values,
+    errors: formErrors,
+    fields,
+    isSubmitting,
+    setSubmitting,
+    setErrors
+  } = useForm(initialSignupData, signupValidator);
+
+  const { mutate: signup } = useSignup();
+  const navigate = useNavigate();
+
+  const signupHandler = e => {
+    e.preventDefault();
+    setSubmitting(true);
+    if (!formErrors) {
+      signup(values, {
+        onSuccess: () => navigate("/"),
+        onError: err => setErrors(toErrorMap(err.response.data.errors))
+      });
+    }
+    setSubmitting(false);
+  };
+
   return (
     <main className="min-height-100 flex items-center py-6">
       <div className="container">
-        <form className="auth__content mx-auto p-6">
+        <form onSubmit={signupHandler} className="auth__content mx-auto p-6">
           <h2 className="h2 ta-center mt-0">SignUp</h2>
-          <InputField label="Name" placeholder="bob" />
-          <InputField label="Email" placeholder="example@xyz.com" />
+          <InputField {...fields.name} label="Name" placeholder="bob" />
           <InputField
+            {...fields.email}
+            label="Email"
+            placeholder="example@xyz.com"
+          />
+          <InputField
+            {...fields.password}
             label="Password"
             type="password"
             placeholder="**********"
           />
           <div className="my-3">
-            <button type="submit" className="btn btn--primary width-100 mx-0">
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="btn btn--primary width-100 mx-0">
               Create New Account
             </button>
           </div>
