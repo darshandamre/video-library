@@ -82,6 +82,23 @@ a {
   margin: 0 auto;
 }
 
+.btn {
+  color: var(--font-color);
+}
+
+.btn--primary {
+  color: var(--white);
+}
+
+.btn--link:hover {
+  background-color: inherit;
+  text-decoration: underline;
+}
+
+.min-height-100 {
+  min-height: 100vh;
+}
+
 .flex {
   display: flex;
 }
