@@ -13,6 +13,21 @@
   border-radius: 5px 5px 0 0;
 }
 
+.video__creator,
+.video__info {
+  font-size: 0.85rem;
+}
+
 .video__creator:hover {
   font-weight: 500;
+}
+
+@media (min-width: 50rem) {
+  .more-icon {
+    visibility: hidden;
+  }
+
+  .video:hover .more-icon {
+    visibility: visible;
+  }
 }

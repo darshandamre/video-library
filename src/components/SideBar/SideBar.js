@@ -41,7 +41,7 @@ const SideBar = ({ toggleSidebar }) => {
           </li>
         </ul>
       </aside>
-      <div className="overlay"></div>
+      <div onClick={toggleSidebar} className="overlay"></div>
     </>
   );
 };

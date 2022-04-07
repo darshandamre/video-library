@@ -2,5 +2,7 @@ export { Card } from "./Card/Card";
 export { Chips } from "./Chips/Chips";
 export { Header } from "./Header/Header";
 export { InputField } from "./InputField/InputField";
+export { Portal } from "./Portal/Portal";
 export { SideBar } from "./SideBar/SideBar";
+export { VideoDialog } from "./VideoDialog/VideoDialog";
 export { VideoList } from "./VideoList/VideoList";

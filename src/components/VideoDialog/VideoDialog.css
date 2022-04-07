@@ -1,0 +1,22 @@
+.dialog-container {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--overlay);
+  overflow-y: hidden;
+}
+
+.video-dialog {
+  transition: all 0.3s ease-in-out;
+  width: 16rem;
+  background-color: var(--zinc);
+  border: 1px solid var(--grey);
+  border-radius: 5px;
+}
+
+.video-dialog > div:hover {
+  background-color: var(--zinc-light);
+}
