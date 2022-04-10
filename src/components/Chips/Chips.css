@@ -6,6 +6,7 @@
 
   position: sticky;
   top: 4.5rem;
+  z-index: 20;
 
   grid-area: chips;
 }

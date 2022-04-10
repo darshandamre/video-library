@@ -1,15 +1,11 @@
-.dialog-container {
-  position: fixed;
-  inset: 0;
-  z-index: 99;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--overlay);
-  overflow-y: hidden;
+.dialog-wrapper {
+  position: relative;
+  z-index: 5;
 }
 
 .video-dialog {
+  position: absolute;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   transition: all 0.3s ease-in-out;
   width: 16rem;
   background-color: var(--zinc);

@@ -30,4 +30,8 @@
   .video:hover .more-icon {
     visibility: visible;
   }
+
+  .more-icon-clicked {
+    visibility: visible;
+  }
 }

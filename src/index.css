@@ -107,7 +107,7 @@ a {
   align-items: center;
 }
 
-.modal-open {
+.stop-scroll {
   position: fixed;
   overflow-y: scroll;
 }
