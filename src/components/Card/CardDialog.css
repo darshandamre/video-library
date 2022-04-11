@@ -1,4 +1,4 @@
-.card-dialog {
+.dialog {
   position: absolute;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   transition: all 0.3s ease-in-out;
@@ -8,6 +8,6 @@
   border-radius: 5px;
 }
 
-.card-dialog > div:hover {
+.dialog > div:hover {
   background-color: var(--zinc-light);
 }

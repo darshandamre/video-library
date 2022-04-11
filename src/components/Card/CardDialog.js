@@ -21,7 +21,7 @@ const CardDialog = () => {
   }, []);
 
   return (
-    <div className="card-dialog fw-500 py-1" ref={dialogRef}>
+    <div className="dialog fw-500 py-1" ref={dialogRef}>
       <div className="flex items-center cursor-pointer py-1">
         <WatchLaterOutlined className="mx-2" /> Save to Watch Later
       </div>
