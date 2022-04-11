@@ -4,9 +4,9 @@ import {
   ShareOutlined,
   WatchLaterOutlined
 } from "@mui/icons-material";
-import "./VideoDialog.css";
+import "./CardDialog.css";
 
-const VideoDialog = () => {
+const CardDialog = () => {
   const dialogRef = useRef();
 
   useLayoutEffect(() => {
@@ -21,7 +21,7 @@ const VideoDialog = () => {
   }, []);
 
   return (
-    <div className="video-dialog fw-500 py-1" ref={dialogRef}>
+    <div className="card-dialog fw-500 py-1" ref={dialogRef}>
       <div className="flex items-center cursor-pointer py-1">
         <WatchLaterOutlined className="mx-2" /> Save to Watch Later
       </div>
@@ -35,4 +35,4 @@ const VideoDialog = () => {
   );
 };
 
-export { VideoDialog };
+export { CardDialog };

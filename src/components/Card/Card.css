@@ -22,6 +22,11 @@
   font-weight: 500;
 }
 
+.dialog-wrapper {
+  position: relative;
+  z-index: 5;
+}
+
 @media (min-width: 50rem) {
   .more-icon {
     visibility: hidden;

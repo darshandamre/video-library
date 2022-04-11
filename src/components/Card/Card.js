@@ -1,16 +1,16 @@
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { VideoDialog } from "../../components";
 import { useOnClickOutside } from "../../hooks/useOnClickOutside";
 import "./Card.css";
+import { CardDialog } from "./CardDialog";
 
 const Card = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const closeDialog = () => setIsDialogOpen(false);
   const dialogWrapperRef = useOnClickOutside(closeDialog, isDialogOpen);
-
   const topRef = useRef();
+
   useEffect(() => {
     if (isDialogOpen) {
       topRef.current = document.documentElement.scrollTop;
@@ -20,8 +20,8 @@ const Card = () => {
     document.body.classList.toggle("stop-scroll");
 
     if (!isDialogOpen) {
-      document.body.style.top = ``;
-      window.scrollTo(0, +topRef.current);
+      document.body.style.top = "";
+      window.scrollTo(0, topRef.current);
     }
   }, [isDialogOpen]);
 
@@ -55,14 +55,12 @@ const Card = () => {
               isDialogOpen ? "more-icon-clicked" : ""
             }`}
           />
-          {isDialogOpen ? <VideoDialog handleClose={closeDialog} /> : null}
+          {isDialogOpen ? <CardDialog handleClose={closeDialog} /> : null}
         </div>
       </div>
       <p className="video__creator px-1">thevirts</p>
       <div className="video__info px-1 pb-1">
-        <span>5.4M views </span>
-        {" | "}
-        <span>5 months ago</span>
+        <span> 5.4M views </span>|<span> 5 months ago </span>
       </div>
     </div>
   );
