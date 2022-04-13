@@ -41,7 +41,7 @@
     display: none;
   }
 
-  .show-sidebar .overlay {
+  .overlay {
     display: none;
   }
 }

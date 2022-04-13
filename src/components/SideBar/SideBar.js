@@ -6,10 +6,15 @@ import {
   ThumbUpOutlined,
   WatchLaterOutlined
 } from "@mui/icons-material";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./SideBar.css";
 
 const SideBar = ({ toggleSidebar }) => {
+  const navLinkClasses = ({ isActive }) =>
+    `${
+      isActive ? "selected-tab" : ""
+    } flex items-center px-3 py-1 cursor-pointer`;
+
   return (
     <>
       <aside className="sidebar fw-500">
@@ -24,20 +29,42 @@ const SideBar = ({ toggleSidebar }) => {
           </Link>
         </div>
         <ul>
-          <li className="selected-tab flex items-center px-3 py-1 cursor-pointer">
-            <HomeOutlined /> <span className="pl-2">Home</span>
+          <li>
+            <NavLink to="/" onClick={toggleSidebar} className={navLinkClasses}>
+              <HomeOutlined /> <span className="pl-2">Home</span>
+            </NavLink>
           </li>
-          <li className="flex items-center px-3 py-1 cursor-pointer">
-            <WatchLaterOutlined /> <span className="pl-2">Watch Later</span>
+          <li>
+            <NavLink
+              to="/watch-later"
+              onClick={toggleSidebar}
+              className={navLinkClasses}>
+              <WatchLaterOutlined /> <span className="pl-2">Watch Later</span>
+            </NavLink>
           </li>
-          <li className="flex items-center px-3 py-1 cursor-pointer">
-            <ThumbUpOutlined /> <span className="pl-2">Liked Videos</span>
+          <li>
+            <NavLink
+              to="/liked-videos"
+              onClick={toggleSidebar}
+              className={navLinkClasses}>
+              <ThumbUpOutlined /> <span className="pl-2">Liked Videos</span>
+            </NavLink>
           </li>
-          <li className="flex items-center px-3 py-1 cursor-pointer">
-            <HistoryOutlined /> <span className="pl-2">History</span>
+          <li>
+            <NavLink
+              to="/history"
+              onClick={toggleSidebar}
+              className={navLinkClasses}>
+              <HistoryOutlined /> <span className="pl-2">History</span>
+            </NavLink>
           </li>
-          <li className="flex items-center px-3 py-1 cursor-pointer">
-            <PlaylistPlayOutlined /> <span className="pl-2">Playlists</span>
+          <li>
+            <NavLink
+              to="/playlists"
+              onClick={toggleSidebar}
+              className={navLinkClasses}>
+              <PlaylistPlayOutlined /> <span className="pl-2">Playlists</span>
+            </NavLink>
           </li>
         </ul>
       </aside>

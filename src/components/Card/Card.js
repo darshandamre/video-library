@@ -17,7 +17,6 @@ const Card = ({ video }) => {
       document.body.style.top = `-${scrollRef.current}px`;
       document.body.classList.add("stop-scroll");
     } else {
-      // if (!isDialogOpen) {
       document.body.classList.remove("stop-scroll");
       document.body.style.top = "";
       window.scrollTo(0, scrollRef.current);
@@ -34,7 +33,7 @@ const Card = ({ video }) => {
   const { _id, title, creator } = video;
 
   return (
-    <div className="video">
+    <div className="video flex direction-column">
       <Link to="/video">
         <img
           className="video__thumbnail"
@@ -57,7 +56,7 @@ const Card = ({ video }) => {
           {isDialogOpen ? <CardDialog handleClose={closeDialog} /> : null}
         </div>
       </div>
-      <p className="video__creator px-1">{creator}</p>
+      <p className="video__creator px-1 mt-auto">{creator}</p>
       <div className="video__info px-1 pb-1">
         <span> 5.4M views </span>|<span> 5 months ago </span>
       </div>
