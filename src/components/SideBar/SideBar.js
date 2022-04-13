@@ -1,20 +1,19 @@
 import {
   Close,
-  HistoryOutlined,
+  History,
+  Home,
   HomeOutlined,
-  PlaylistPlayOutlined,
+  PlaylistPlay,
+  ThumbUp,
   ThumbUpOutlined,
+  WatchLater,
   WatchLaterOutlined
 } from "@mui/icons-material";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./SideBar.css";
+import { SideBarNavLink } from "./SideBarNavLink";
 
 const SideBar = ({ toggleSidebar }) => {
-  const navLinkClasses = ({ isActive }) =>
-    `${
-      isActive ? "selected-tab" : ""
-    } flex items-center px-3 py-1 cursor-pointer`;
-
   return (
     <>
       <aside className="sidebar fw-500">
@@ -30,41 +29,61 @@ const SideBar = ({ toggleSidebar }) => {
         </div>
         <ul>
           <li>
-            <NavLink to="/" onClick={toggleSidebar} className={navLinkClasses}>
-              <HomeOutlined /> <span className="pl-2">Home</span>
-            </NavLink>
+            <SideBarNavLink
+              to="/"
+              onClick={toggleSidebar}
+              icon={<HomeOutlined />}
+              activeIcon={<Home />}
+              text="Home"
+            />
           </li>
           <li>
-            <NavLink
+            <SideBarNavLink
               to="/watch-later"
               onClick={toggleSidebar}
-              className={navLinkClasses}>
-              <WatchLaterOutlined /> <span className="pl-2">Watch Later</span>
-            </NavLink>
+              icon={<WatchLaterOutlined />}
+              activeIcon={<WatchLater />}
+              text="Watch Later"
+            />
           </li>
           <li>
-            <NavLink
+            <SideBarNavLink
               to="/liked-videos"
               onClick={toggleSidebar}
-              className={navLinkClasses}>
-              <ThumbUpOutlined /> <span className="pl-2">Liked Videos</span>
-            </NavLink>
+              icon={<ThumbUpOutlined />}
+              activeIcon={<ThumbUp />}
+              text="Liked Videos"
+            />
           </li>
           <li>
-            <NavLink
+            <SideBarNavLink
               to="/history"
               onClick={toggleSidebar}
-              className={navLinkClasses}>
-              <HistoryOutlined /> <span className="pl-2">History</span>
-            </NavLink>
+              icon={<History />}
+              activeIcon={
+                <History
+                  sx={{
+                    stroke: "black"
+                  }}
+                />
+              }
+              text="History"
+            />
           </li>
           <li>
-            <NavLink
+            <SideBarNavLink
               to="/playlists"
               onClick={toggleSidebar}
-              className={navLinkClasses}>
-              <PlaylistPlayOutlined /> <span className="pl-2">Playlists</span>
-            </NavLink>
+              icon={<PlaylistPlay />}
+              activeIcon={
+                <PlaylistPlay
+                  sx={{
+                    stroke: "black"
+                  }}
+                />
+              }
+              text="Playlists"
+            />
           </li>
         </ul>
       </aside>
