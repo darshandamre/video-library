@@ -5,23 +5,22 @@ import { useOnClickOutside } from "../../hooks/useOnClickOutside";
 import "./Card.css";
 import { CardDialog } from "./CardDialog";
 
-const Card = () => {
+const Card = ({ video }) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const closeDialog = () => setIsDialogOpen(false);
   const dialogWrapperRef = useOnClickOutside(closeDialog, isDialogOpen);
-  const topRef = useRef();
+  const scrollRef = useRef();
 
   useEffect(() => {
     if (isDialogOpen) {
-      topRef.current = document.documentElement.scrollTop;
-      document.body.style.top = `-${topRef.current}px`;
-    }
-
-    document.body.classList.toggle("stop-scroll");
-
-    if (!isDialogOpen) {
+      scrollRef.current = document.documentElement.scrollTop;
+      document.body.style.top = `-${scrollRef.current}px`;
+      document.body.classList.add("stop-scroll");
+    } else {
+      // if (!isDialogOpen) {
+      document.body.classList.remove("stop-scroll");
       document.body.style.top = "";
-      window.scrollTo(0, topRef.current);
+      window.scrollTo(0, scrollRef.current);
     }
   }, [isDialogOpen]);
 
@@ -32,23 +31,23 @@ const Card = () => {
     return () => window.removeEventListener("resize", closeDialog);
   }, [isDialogOpen]);
 
+  const { _id, title, creator } = video;
+
   return (
     <div className="video">
       <Link to="/video">
         <img
           className="video__thumbnail"
-          src="https://i.ytimg.com/vi/I0KSaqiv5C0/hq720.jpg"
+          // src={`https://i.ytimg.com/vi/${_id}/hq720.jpg`}
+          src={`https://img.youtube.com/vi/${_id}/mqdefault.jpg`}
           alt="Liquid Paper | If Bruce Lee shuffled cards..."
         />
       </Link>
       <div className="flex">
-        <Link to="/video">
-          <h3 className="fw-500 p-1">
-            Liquid Paper | If Bruce Lee shuffled cards... | Cardistry by
-            Virtuoso
-          </h3>
-        </Link>
-        <div className="dialog-wrapper" ref={dialogWrapperRef}>
+        <h3 className="video__title fw-500 m-1">
+          <Link to="/video">{title}</Link>
+        </h3>
+        <div className="dialog-wrapper ml-auto" ref={dialogWrapperRef}>
           <MoreVertIcon
             onClick={() => setIsDialogOpen(o => !o)}
             className={`more-icon cursor-pointer my-1 ${
@@ -58,7 +57,7 @@ const Card = () => {
           {isDialogOpen ? <CardDialog handleClose={closeDialog} /> : null}
         </div>
       </div>
-      <p className="video__creator px-1">thevirts</p>
+      <p className="video__creator px-1">{creator}</p>
       <div className="video__info px-1 pb-1">
         <span> 5.4M views </span>|<span> 5 months ago </span>
       </div>

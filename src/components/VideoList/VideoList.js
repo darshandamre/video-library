@@ -2,11 +2,11 @@ import React from "react";
 import { Card } from "../../components";
 import "./VideoList.css";
 
-const VideoList = () => {
+const VideoList = ({ videos }) => {
   return (
     <div className="video-list m-1">
-      {Array.from({ length: 20 }).map((x, i) => (
-        <Card key={i} />
+      {videos?.map(video => (
+        <Card key={video._id} video={video} />
       ))}
     </div>
   );
