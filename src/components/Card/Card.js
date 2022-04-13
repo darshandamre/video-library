@@ -1,5 +1,5 @@
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useOnClickOutside } from "../../hooks/useOnClickOutside";
 import "./Card.css";
@@ -9,19 +9,6 @@ const Card = ({ video }) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const closeDialog = () => setIsDialogOpen(false);
   const dialogWrapperRef = useOnClickOutside(closeDialog, isDialogOpen);
-  const scrollRef = useRef();
-
-  useEffect(() => {
-    if (isDialogOpen) {
-      scrollRef.current = document.documentElement.scrollTop;
-      document.body.style.top = `-${scrollRef.current}px`;
-      document.body.classList.add("stop-scroll");
-    } else {
-      document.body.classList.remove("stop-scroll");
-      document.body.style.top = "";
-      window.scrollTo(0, scrollRef.current);
-    }
-  }, [isDialogOpen]);
 
   useEffect(() => {
     if (isDialogOpen) {
@@ -37,7 +24,6 @@ const Card = ({ video }) => {
       <Link to="/video">
         <img
           className="video__thumbnail"
-          // src={`https://i.ytimg.com/vi/${_id}/hq720.jpg`}
           src={`https://img.youtube.com/vi/${_id}/mqdefault.jpg`}
           alt="Liquid Paper | If Bruce Lee shuffled cards..."
         />
@@ -53,7 +39,9 @@ const Card = ({ video }) => {
               isDialogOpen ? "more-icon-clicked" : ""
             }`}
           />
-          {isDialogOpen ? <CardDialog handleClose={closeDialog} /> : null}
+          {isDialogOpen ? (
+            <CardDialog video={video} handleClose={closeDialog} />
+          ) : null}
         </div>
       </div>
       <p className="video__creator px-1 mt-auto">{creator}</p>

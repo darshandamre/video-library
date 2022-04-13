@@ -6,8 +6,7 @@ const WatchLater = () => {
 
   return (
     <>
-      <h3 className="h3 mx-4 my-0">Watch Later</h3>
-
+      <h3 className="h3 mx-4 my-2">Watch Later</h3>
       {isLoading ? "loading..." : <VideoList videos={data?.watchlater} />}
     </>
   );
