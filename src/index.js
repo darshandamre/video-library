@@ -3,8 +3,8 @@ import ReactDOM from "react-dom";
 import { QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { BrowserRouter } from "react-router-dom";
-import { App } from "./App";
 import "./index.css";
+import { App } from "./App";
 import { queryClient } from "./react-query/client";
 import { makeServer } from "./server";
 
