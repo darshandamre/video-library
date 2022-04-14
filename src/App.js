@@ -1,8 +1,6 @@
 import { Route, Routes } from "react-router-dom";
-import { Layout } from "./components";
-import { RequireAuth } from "./components/RequireAuth";
-import { Home, Login, SignUp } from "./pages";
-import { WatchLater } from "./pages/WatchLater/WatchLater";
+import { Layout, RequireAuth } from "./components";
+import { Home, Login, SignUp, WatchLater } from "./pages";
 
 const App = () => {
   return (

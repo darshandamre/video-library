@@ -1,7 +1,7 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { InputField } from "../../components";
 import { useForm } from "../../hooks/useForm";
-import { useLogin } from "../../react-query/mutations/useLogin";
+import { useLogin } from "../../react-query/mutations";
 import { toErrorMap } from "../../utils/toErrorMap";
 import { loginValidator } from "../../utils/validator";
 import "./Auth.css";

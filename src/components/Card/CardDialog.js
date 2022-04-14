@@ -10,7 +10,7 @@ import {
   useAddToWatchLater,
   useRemoveFromWatchLater
 } from "../../react-query/mutations";
-import { useUser } from "../../react-query/queries/useUser";
+import { useUser } from "../../react-query/queries";
 import "./CardDialog.css";
 
 const CardDialog = ({ video, handleClose }) => {

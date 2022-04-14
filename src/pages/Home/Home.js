@@ -1,5 +1,5 @@
 import { Chips, VideoList } from "../../components";
-import { useVideos } from "../../react-query/queries/useVidoes";
+import { useVideos } from "../../react-query/queries";
 import "./Home.css";
 
 const Home = () => {

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { VideoList } from "../../components";
-import { useWatchLater } from "../../react-query/queries/useWatchLater";
+import { useWatchLater } from "../../react-query/queries";
 
 const WatchLater = () => {
   const { data, isLoading } = useWatchLater();

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useCategories } from "../../react-query/queries/useCategories";
+import { useCategories } from "../../react-query/queries";
 import "./Chips.css";
 
 const Chips = () => {

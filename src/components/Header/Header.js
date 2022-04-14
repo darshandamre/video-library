@@ -2,7 +2,7 @@ import { Menu } from "@mui/icons-material";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { privateReq } from "../../axios";
 import { queryClient } from "../../react-query/client";
-import { useUser } from "../../react-query/queries/useUser";
+import { useUser } from "../../react-query/queries";
 import { removeToken } from "../../utils/token";
 import "./Header.css";
 
