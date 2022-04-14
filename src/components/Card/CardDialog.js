@@ -5,18 +5,21 @@ import {
   WatchLaterOutlined
 } from "@mui/icons-material";
 import React, { useLayoutEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   useAddToWatchLater,
   useRemoveFromWatchLater
 } from "../../react-query/mutations";
+import { useUser } from "../../react-query/queries/useUser";
 import "./CardDialog.css";
 
 const CardDialog = ({ video, handleClose }) => {
   const dialogRef = useRef();
+  const { data } = useUser();
   const { mutate: addToWatchLater } = useAddToWatchLater();
   const { mutate: removeFromWatchLater } = useRemoveFromWatchLater();
-  const { pathname } = useLocation();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useLayoutEffect(() => {
     const dialogDimensions = dialogRef.current.getBoundingClientRect();
@@ -31,7 +34,7 @@ const CardDialog = ({ video, handleClose }) => {
 
   return (
     <div className="dialog fw-500 py-1" ref={dialogRef}>
-      {pathname === "/watch-later" ? (
+      {location.pathname === "/watch-later" ? (
         <div
           onClick={() => {
             removeFromWatchLater(video._id);
@@ -44,6 +47,11 @@ const CardDialog = ({ video, handleClose }) => {
       ) : (
         <div
           onClick={() => {
+            if (!data?.user?._id)
+              return navigate("/login", {
+                state: { from: location },
+                replace: true
+              });
             addToWatchLater(video);
             handleClose();
           }}
