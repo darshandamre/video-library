@@ -1,0 +1,29 @@
+.layout {
+  display: grid;
+  grid-template-areas: "header" "content";
+  grid-template-rows: auto 1fr;
+  align-items: start;
+}
+
+.content {
+  grid-column: content;
+}
+
+.show-sidebar {
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* larger than 800px */
+@media (min-width: 50rem) {
+  .layout {
+    grid-template-columns: 14rem 1fr;
+    grid-template-areas:
+      "header header"
+      "sidebar content";
+  }
+
+  .show-sidebar {
+    overflow: auto;
+  }
+}

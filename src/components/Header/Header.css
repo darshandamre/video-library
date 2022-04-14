@@ -2,6 +2,7 @@
   position: sticky;
   top: 0;
   background: var(--zinc);
+  z-index: 20;
 
   grid-area: header;
   display: flex;

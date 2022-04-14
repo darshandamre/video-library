@@ -1,19 +1,15 @@
-import React, { useState } from "react";
-import { Chips, Header, SideBar, VideoList } from "../../components";
+import { Chips, VideoList } from "../../components";
+import { useVideos } from "../../react-query/queries";
 import "./Home.css";
 
 const Home = () => {
-  const [showSidebar, setShowSidebar] = useState(false);
-
-  const toggleSidebar = () => setShowSidebar(v => !v);
+  const { data, isLoading } = useVideos();
 
   return (
-    <div className={`home ${showSidebar ? "show-sidebar" : ""}`}>
-      <Header toggleSidebar={toggleSidebar} />
+    <>
       <Chips />
-      <SideBar toggleSidebar={toggleSidebar} />
-      <VideoList />
-    </div>
+      {isLoading ? "loading..." : <VideoList videos={data?.videos} />}
+    </>
   );
 };
 

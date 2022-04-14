@@ -1,0 +1,13 @@
+.dialog {
+  position: absolute;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition: all 0.3s ease-in-out;
+  min-width: 16rem;
+  background-color: var(--zinc);
+  border: 1px solid var(--grey);
+  border-radius: 5px;
+}
+
+.dialog > div:hover {
+  background-color: var(--zinc-light);
+}

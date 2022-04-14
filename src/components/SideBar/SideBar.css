@@ -3,7 +3,7 @@
   position: absolute;
   width: 18rem;
   height: 100vh;
-  z-index: 10;
+  z-index: 40;
   transform: translateX(-18rem);
   transition: all 0.3s ease-in-out;
 
@@ -17,6 +17,7 @@
 .show-sidebar .overlay {
   position: absolute;
   inset: 0;
+  z-index: 30;
   background-color: var(--overlay);
 }
 
@@ -40,7 +41,7 @@
     display: none;
   }
 
-  .show-sidebar .overlay {
+  .overlay {
     display: none;
   }
 }

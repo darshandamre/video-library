@@ -9,10 +9,40 @@
 }
 
 .video__thumbnail {
-  max-width: 100%;
   border-radius: 5px 5px 0 0;
+}
+
+.video__title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.video__creator,
+.video__info {
+  font-size: 0.85rem;
 }
 
 .video__creator:hover {
   font-weight: 500;
+}
+
+.dialog-wrapper {
+  position: relative;
+  z-index: 5;
+}
+
+@media (min-width: 50rem) {
+  .more-icon {
+    visibility: hidden;
+  }
+
+  .video:hover .more-icon {
+    visibility: visible;
+  }
+
+  .more-icon-clicked {
+    visibility: visible;
+  }
 }

@@ -1,13 +1,17 @@
 import {
   Close,
-  HistoryOutlined,
+  History,
+  Home,
   HomeOutlined,
-  PlaylistPlayOutlined,
+  PlaylistPlay,
+  ThumbUp,
   ThumbUpOutlined,
+  WatchLater,
   WatchLaterOutlined
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import "./SideBar.css";
+import { SideBarNavLink } from "./SideBarNavLink";
 
 const SideBar = ({ toggleSidebar }) => {
   return (
@@ -24,24 +28,66 @@ const SideBar = ({ toggleSidebar }) => {
           </Link>
         </div>
         <ul>
-          <li className="selected-tab flex items-center px-3 py-1 cursor-pointer">
-            <HomeOutlined /> <span className="pl-2">Home</span>
+          <li>
+            <SideBarNavLink
+              to="/"
+              onClick={toggleSidebar}
+              icon={<HomeOutlined />}
+              activeIcon={<Home />}
+              text="Home"
+            />
           </li>
-          <li className="flex items-center px-3 py-1 cursor-pointer">
-            <WatchLaterOutlined /> <span className="pl-2">Watch Later</span>
+          <li>
+            <SideBarNavLink
+              to="/watch-later"
+              onClick={toggleSidebar}
+              icon={<WatchLaterOutlined />}
+              activeIcon={<WatchLater />}
+              text="Watch Later"
+            />
           </li>
-          <li className="flex items-center px-3 py-1 cursor-pointer">
-            <ThumbUpOutlined /> <span className="pl-2">Liked Videos</span>
+          <li>
+            <SideBarNavLink
+              to="/liked-videos"
+              onClick={toggleSidebar}
+              icon={<ThumbUpOutlined />}
+              activeIcon={<ThumbUp />}
+              text="Liked Videos"
+            />
           </li>
-          <li className="flex items-center px-3 py-1 cursor-pointer">
-            <HistoryOutlined /> <span className="pl-2">History</span>
+          <li>
+            <SideBarNavLink
+              to="/history"
+              onClick={toggleSidebar}
+              icon={<History />}
+              activeIcon={
+                <History
+                  sx={{
+                    stroke: "black"
+                  }}
+                />
+              }
+              text="History"
+            />
           </li>
-          <li className="flex items-center px-3 py-1 cursor-pointer">
-            <PlaylistPlayOutlined /> <span className="pl-2">Playlists</span>
+          <li>
+            <SideBarNavLink
+              to="/playlists"
+              onClick={toggleSidebar}
+              icon={<PlaylistPlay />}
+              activeIcon={
+                <PlaylistPlay
+                  sx={{
+                    stroke: "black"
+                  }}
+                />
+              }
+              text="Playlists"
+            />
           </li>
         </ul>
       </aside>
-      <div className="overlay"></div>
+      <div onClick={toggleSidebar} className="overlay"></div>
     </>
   );
 };

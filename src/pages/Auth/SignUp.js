@@ -1,7 +1,7 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { InputField } from "../../components";
 import { useForm } from "../../hooks/useForm";
-import { useSignup } from "../../react-query/mutations/useSignup";
+import { useSignup } from "../../react-query/mutations";
 import { toErrorMap } from "../../utils/toErrorMap";
 import { signupValidator } from "../../utils/validator";
 import "./Auth.css";
@@ -24,13 +24,15 @@ const SignUp = () => {
 
   const { mutate: signup } = useSignup();
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from ?? { pathname: "/" };
 
   const signupHandler = e => {
     e.preventDefault();
     setSubmitting(true);
     if (!formErrors) {
       signup(values, {
-        onSuccess: () => navigate("/"),
+        onSuccess: () => navigate(from, { replace: true }),
         onError: err => setErrors(toErrorMap(err.response.data.errors))
       });
     }
@@ -63,7 +65,11 @@ const SignUp = () => {
             </button>
           </div>
           <p className="ta-center">
-            <Link to="/login" className="btn btn--link">
+            <Link
+              to="/login"
+              state={{ from }}
+              replace
+              className="btn btn--link">
               Already have an account
               <i className="fa-solid fa-greater-than ml-1"></i>
             </Link>

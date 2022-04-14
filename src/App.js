@@ -1,11 +1,17 @@
 import { Route, Routes } from "react-router-dom";
-import { Home, Login, SignUp } from "./pages";
+import { Layout, RequireAuth } from "./components";
+import { Home, Login, SignUp, WatchLater } from "./pages";
 
 const App = () => {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route element={<RequireAuth />}>
+            <Route path="watch-later" element={<WatchLater />} />
+          </Route>
+        </Route>
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
       </Routes>

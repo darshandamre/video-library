@@ -1,7 +1,7 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { InputField } from "../../components";
 import { useForm } from "../../hooks/useForm";
-import { useLogin } from "../../react-query/mutations/useLogin";
+import { useLogin } from "../../react-query/mutations";
 import { toErrorMap } from "../../utils/toErrorMap";
 import { loginValidator } from "../../utils/validator";
 import "./Auth.css";
@@ -27,13 +27,15 @@ const Login = () => {
   } = useForm(initialLoginData, loginValidator);
   const { mutate: login } = useLogin();
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from ?? { pathname: "/" };
 
   const loginWithUserCredentials = e => {
     e.preventDefault();
     setSubmitting(true);
     if (!formErrors) {
       login(values, {
-        onSuccess: () => navigate("/"),
+        onSuccess: () => navigate(from, { replace: true }),
         onError: err => setErrors(toErrorMap(err.response.data.errors))
       });
     }
@@ -43,7 +45,7 @@ const Login = () => {
   const loginWithTestCredentials = e => {
     e.preventDefault();
     login(testCredentials, {
-      onSuccess: () => navigate("/"),
+      onSuccess: () => navigate(from, { replace: true }),
       onError: err => setErrors(toErrorMap(err.response.data.errors))
     });
   };
@@ -84,7 +86,11 @@ const Login = () => {
             </button>
           </div>
           <p className="ta-center">
-            <Link to="/signup" className="btn btn--link">
+            <Link
+              to="/signup"
+              state={{ from }}
+              replace
+              className="btn btn--link">
               Create New Account
               <i className="fa-solid fa-greater-than ml-1"></i>
             </Link>

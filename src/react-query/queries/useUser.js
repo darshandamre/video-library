@@ -1,16 +1,12 @@
-import axios from "axios";
 import { useQuery } from "react-query";
+import { privateReq } from "../../axios";
 import { getToken } from "../../utils/token";
 
 export const useUser = () =>
   useQuery(
     "user",
     async () => {
-      const res = await axios.get("/api/user", {
-        headers: {
-          authorization: getToken()
-        }
-      });
+      const res = await privateReq.get("/");
       return res.data;
     },
     {

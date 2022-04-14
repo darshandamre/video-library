@@ -6,8 +6,7 @@
 
   position: sticky;
   top: 4.5rem;
-
-  grid-area: chips;
+  z-index: 20;
 }
 
 .chips__item {
