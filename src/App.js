@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { Layout, RequireAuth } from "./components";
-import { Home, Login, SignUp, WatchLater } from "./pages";
+import { Home, Login, SignUp, Video, WatchLater } from "./pages";
 
 const App = () => {
   return (
@@ -8,6 +8,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="video/:videoId" element={<Video />} />
           <Route element={<RequireAuth />}>
             <Route path="watch-later" element={<WatchLater />} />
           </Route>
