@@ -1,6 +1,10 @@
 import axios from "axios";
 import { getToken } from "./utils/token";
 
+const publicReq = axios.create({
+  baseURL: "/api"
+});
+
 const privateReq = axios.create({
   baseURL: "/api/user",
   headers: {
@@ -8,4 +12,4 @@ const privateReq = axios.create({
   }
 });
 
-export { privateReq };
+export { publicReq, privateReq };

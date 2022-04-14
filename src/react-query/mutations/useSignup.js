@@ -1,13 +1,12 @@
-import axios from "axios";
 import { useMutation } from "react-query";
-import { privateReq } from "../../axios";
+import { privateReq, publicReq } from "../../axios";
 import { setToken } from "../../utils/token";
 import { queryClient } from "../client";
 
 export const useSignup = () =>
   useMutation(
     async body => {
-      const res = await axios.post("api/auth/signup", body);
+      const res = await publicReq.post("auth/signup", body);
       return res.data;
     },
     {

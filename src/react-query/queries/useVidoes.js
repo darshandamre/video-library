@@ -1,8 +1,8 @@
-import axios from "axios";
 import { useQuery } from "react-query";
+import { publicReq } from "../../axios";
 
 export const useVideos = () =>
   useQuery("videos", async () => {
-    const res = await axios.get("/api/videos");
+    const res = await publicReq.get("videos");
     return res.data;
   });
