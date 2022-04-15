@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { Layout, RequireAuth } from "./components";
-import { Home, Login, SignUp, Video, WatchLater } from "./pages";
+import { Home, LikedVideos, Login, SignUp, Video, WatchLater } from "./pages";
 
 const App = () => {
   return (
@@ -11,6 +11,7 @@ const App = () => {
           <Route path="video/:videoId" element={<Video />} />
           <Route element={<RequireAuth />}>
             <Route path="watch-later" element={<WatchLater />} />
+            <Route path="liked-videos" element={<LikedVideos />} />
           </Route>
         </Route>
         <Route path="/signup" element={<SignUp />} />
