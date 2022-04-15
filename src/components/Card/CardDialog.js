@@ -6,16 +6,16 @@ import {
 } from "@mui/icons-material";
 import React, { useLayoutEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../../hooks";
 import {
   useAddToWatchLater,
   useRemoveFromWatchLater
 } from "../../react-query/mutations";
-import { useUser } from "../../react-query/queries";
 import "./CardDialog.css";
 
 const CardDialog = ({ video, handleClose }) => {
   const dialogRef = useRef();
-  const { data } = useUser();
+  const { isAuth } = useAuth();
   const { mutate: addToWatchLater } = useAddToWatchLater();
   const { mutate: removeFromWatchLater } = useRemoveFromWatchLater();
   const location = useLocation();
@@ -47,7 +47,7 @@ const CardDialog = ({ video, handleClose }) => {
       ) : (
         <div
           onClick={() => {
-            if (!data?.user?._id)
+            if (!isAuth)
               return navigate("/login", {
                 state: { from: location },
                 replace: true

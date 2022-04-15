@@ -1,13 +1,13 @@
 import { Menu } from "@mui/icons-material";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { privateReq } from "../../axios";
+import { useAuth } from "../../hooks";
 import { queryClient } from "../../react-query/client";
-import { useUser } from "../../react-query/queries";
 import { removeToken } from "../../utils/token";
 import "./Header.css";
 
 const Header = ({ toggleSidebar }) => {
-  const { data } = useUser();
+  const { isAuth } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -32,7 +32,7 @@ const Header = ({ toggleSidebar }) => {
       </div>
 
       <div className="header__actions flex">
-        {data?.user?._id ? (
+        {isAuth ? (
           <span onClick={logoutHandler} className="btn btn--link m-0">
             Logout
           </span>
