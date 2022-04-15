@@ -1,8 +1,7 @@
 import {
   PlaylistAddOutlined,
   ShareOutlined,
-  ThumbUpOutlined,
-  WatchLaterOutlined
+  ThumbUpOutlined
 } from "@mui/icons-material";
 import { useParams } from "react-router-dom";
 import { useVideo } from "../../react-query/queries";
@@ -25,25 +24,20 @@ const Video = () => {
           allowFullScreen></iframe>
 
         <h3 className="h3">{title}</h3>
-        <div>
-          <div className="video-actions-container mx-auto">
-            <button className="video-actions">
-              <ThumbUpOutlined className="mr-1" /> Like
-            </button>
-            <button className="video-actions">
-              <ShareOutlined className="mr-1" />
-              Share
-            </button>
-            <button className="video-actions">
-              <PlaylistAddOutlined className="mr-1" />
-              Save
-            </button>
-            <button className="video-actions">
-              <WatchLaterOutlined className="mr-1" />
-              Watch Later
-            </button>
-          </div>
-          <p className="creator fw-600 text-base mb-0">{creator}</p>
+        <div className="video-actions-container flex items-center py-2">
+          <p className="fw-600 text-base m-0">{creator}</p>
+          <button className="video-actions ml-auto">
+            <ThumbUpOutlined />
+            <span className="video-actions-text ml-1">Like</span>
+          </button>
+          <button className="video-actions">
+            <ShareOutlined />
+            <span className="video-actions-text ml-1">Share</span>
+          </button>
+          <button className="video-actions">
+            <PlaylistAddOutlined />
+            <span className="video-actions-text ml-1">Save</span>
+          </button>
         </div>
 
         <div className="description-box">

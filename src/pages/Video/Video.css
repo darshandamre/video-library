@@ -7,15 +7,9 @@
   aspect-ratio: 16/9;
 }
 
-.video-player-wrapper .creator {
+.video-actions-container {
   border-top: 1px solid var(--zinc);
   border-bottom: 1px solid var(--zinc);
-  padding-block: 1rem;
-}
-
-.video-actions-container {
-  display: flex;
-  flex-wrap: wrap;
 }
 
 .video-actions {
@@ -34,8 +28,19 @@
   background-color: var(--neutral-300);
 }
 
+.video-actions-text {
+  display: none;
+}
+
 .description-box {
   white-space: pre-line;
+}
+
+/* larger than 480px */
+@media only screen and (min-width: 30em) {
+  .video-actions-text {
+    display: block;
+  }
 }
 
 /* larger than 768px */
