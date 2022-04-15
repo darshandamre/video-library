@@ -6,7 +6,6 @@ export const useRemoveFromWatchLater = () =>
   useMutation(
     async videoId => {
       const res = await privateReq.delete(`watchlater/${videoId}`);
-      console.log(res);
       return res.data;
     },
     {
