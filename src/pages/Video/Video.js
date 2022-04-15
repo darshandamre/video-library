@@ -1,16 +1,31 @@
 import {
   PlaylistAddOutlined,
   ShareOutlined,
+  ThumbUp,
   ThumbUpOutlined
 } from "@mui/icons-material";
 import { useParams } from "react-router-dom";
-import { useVideo } from "../../react-query/queries";
+import { useAddToLikes, useRemoveFromLikes } from "../../react-query/mutations";
+import { useLikes, useVideo } from "../../react-query/queries";
 import "./Video.css";
 
 const Video = () => {
   const { videoId } = useParams();
-  const { data } = useVideo(videoId);
-  const { title, creator, description } = data?.video ?? {};
+  const { data: videoData } = useVideo(videoId);
+  const { video } = videoData ?? {};
+  const { title, creator, description } = video ?? {};
+
+  const { data: likesData } = useLikes();
+  const { mutate: addToLikes } = useAddToLikes();
+  const { mutate: removeFromLikes } = useRemoveFromLikes();
+
+  const liked = likesData?.likes?.some(
+    likedVideo => likedVideo._id === videoId
+  );
+
+  const handleLikes = () => {
+    liked ? removeFromLikes(videoId) : addToLikes(video);
+  };
 
   return (
     <>
@@ -26,15 +41,20 @@ const Video = () => {
         <h3 className="h3">{title}</h3>
         <div className="video-actions-container flex items-center py-2">
           <p className="fw-600 text-base m-0">{creator}</p>
-          <button className="video-actions ml-auto">
-            <ThumbUpOutlined />
-            <span className="video-actions-text ml-1">Like</span>
+          <button
+            className="video-actions ml-auto"
+            onClick={handleLikes}
+            title={liked ? "unlike" : "I like this"}>
+            {liked ? <ThumbUp /> : <ThumbUpOutlined />}
+            <span className="video-actions-text ml-1">
+              {liked ? "liked" : "like"}
+            </span>
           </button>
-          <button className="video-actions">
+          <button className="video-actions" title="Share">
             <ShareOutlined />
             <span className="video-actions-text ml-1">Share</span>
           </button>
-          <button className="video-actions">
+          <button className="video-actions" title="Save">
             <PlaylistAddOutlined />
             <span className="video-actions-text ml-1">Save</span>
           </button>
