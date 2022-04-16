@@ -6,7 +6,7 @@ import {
 } from "@mui/icons-material";
 import React, { useLayoutEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useAuth } from "../../hooks";
+import { useAuth } from "../../context/AuthContext";
 import {
   useAddToWatchLater,
   useRemoveFromLikes,
