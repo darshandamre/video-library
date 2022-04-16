@@ -54,10 +54,10 @@ export const addVideoToHistoryHandler = function (schema, request) {
       );
     }
     const { video } = JSON.parse(request.requestBody);
-    const newHistory = user.history.filter(item => item.id !== video.id);
-    newHistory.push(video);
+    const filteredHistory = user.history.filter(item => item.id !== video.id);
+    const newHistory = [video, ...filteredHistory]
     this.db.users.update({ history: newHistory });
-    return new Response(201, {}, { history: user.history });
+    return new Response(201, {}, { history: newHistory });
   } catch (error) {
     return new Response(
       500,

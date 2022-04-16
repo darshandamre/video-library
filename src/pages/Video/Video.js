@@ -4,9 +4,14 @@ import {
   ThumbUp,
   ThumbUpOutlined
 } from "@mui/icons-material";
+import { useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../../hooks";
-import { useAddToLikes, useRemoveFromLikes } from "../../react-query/mutations";
+import {
+  useAddToHistory,
+  useAddToLikes,
+  useRemoveFromLikes
+} from "../../react-query/mutations";
 import { useLikes, useVideo } from "../../react-query/queries";
 import "./Video.css";
 
@@ -18,6 +23,11 @@ const Video = () => {
   const { isAuth } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
+
+  const { mutate: addToHistory } = useAddToHistory();
+  useEffect(() => {
+    if (video && isAuth) addToHistory(video);
+  }, [addToHistory, isAuth, video]);
 
   const { data: likesData } = useLikes();
   const { mutate: addToLikes } = useAddToLikes();
