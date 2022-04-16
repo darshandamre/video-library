@@ -6,8 +6,8 @@ const SideBarNavLink = ({ icon, activeIcon, text, onClick, to }) => {
       to={to}
       className={({ isActive }) =>
         `${
-          isActive ? "selected-tab" : ""
-        } flex items-center px-3 py-1 cursor-pointer`
+          isActive ? "sidebar-link-selected" : ""
+        } sidebar-link flex items-center px-3 py-1 cursor-pointer`
       }
       onClick={onClick}>
       {({ isActive }) => (

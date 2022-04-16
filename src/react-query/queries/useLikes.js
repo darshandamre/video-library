@@ -3,15 +3,15 @@ import { privateReq } from "../../axios";
 import { useAuth } from "../../hooks";
 import { userKeys } from "../keyFactory";
 
-const getWatchLater = async () => {
-  const res = await privateReq.get("watchlater");
+const getLikes = async () => {
+  const res = await privateReq.get("likes");
   return res.data;
 };
 
-export const useWatchLater = () => {
+export const useLikes = () => {
   const { isAuth } = useAuth();
 
-  return useQuery(userKeys.watchLater(), getWatchLater, {
+  return useQuery(userKeys.likes(), getLikes, {
     enabled: isAuth
   });
 };

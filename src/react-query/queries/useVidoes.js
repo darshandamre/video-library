@@ -1,8 +1,10 @@
 import { useQuery } from "react-query";
 import { publicReq } from "../../axios";
+import { videoKeys } from "../keyFactory";
 
-export const useVideos = () =>
-  useQuery("videos", async () => {
-    const res = await publicReq.get("videos");
-    return res.data;
-  });
+const getVideos = async () => {
+  const res = await publicReq.get("videos");
+  return res.data;
+};
+
+export const useVideos = () => useQuery(videoKeys.all(), getVideos);

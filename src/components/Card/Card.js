@@ -1,7 +1,7 @@
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useOnClickOutside } from "../../hooks/useOnClickOutside";
+import { useOnClickOutside } from "../../hooks";
 import "./Card.css";
 import { CardDialog } from "./CardDialog";
 
@@ -21,7 +21,7 @@ const Card = ({ video }) => {
 
   return (
     <div className="video flex direction-column">
-      <Link to="/video">
+      <Link to={`/video/${_id}`}>
         <img
           className="video__thumbnail"
           src={`https://img.youtube.com/vi/${_id}/mqdefault.jpg`}
@@ -30,7 +30,7 @@ const Card = ({ video }) => {
       </Link>
       <div className="flex">
         <h3 className="video__title fw-500 m-1">
-          <Link to="/video">{title}</Link>
+          <Link to={`/video/${_id}`}>{title}</Link>
         </h3>
         <div className="dialog-wrapper ml-auto" ref={dialogWrapperRef}>
           <MoreVertIcon
