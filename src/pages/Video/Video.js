@@ -6,7 +6,7 @@ import {
 } from "@mui/icons-material";
 import { useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { useAuth } from "../../hooks";
+import { useAuth } from "../../context/AuthContext";
 import {
   useAddToHistory,
   useAddToLikes,
