@@ -21,7 +21,11 @@
   background-color: var(--overlay);
 }
 
-.selected-tab {
+.sidebar-link:hover {
+  background-color: var(--zinc-light);
+}
+
+.sidebar-link-selected {
   background-color: var(--zinc-light);
 }
 

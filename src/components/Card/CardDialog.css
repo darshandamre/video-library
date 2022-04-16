@@ -2,12 +2,23 @@
   position: absolute;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   transition: all 0.3s ease-in-out;
-  min-width: 16rem;
+  min-width: 18rem;
   background-color: var(--zinc);
   border: 1px solid var(--grey);
   border-radius: 5px;
 }
 
-.dialog > div:hover {
+.dialog-options {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding-block: 0.5rem;
+}
+
+.dialog-options:hover {
   background-color: var(--zinc-light);
+}
+
+.border-top-grey {
+  border-top: 1px solid var(--grey);
 }
