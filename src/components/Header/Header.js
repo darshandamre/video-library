@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { privateReq } from "../../axios";
 import { useAuth } from "../../hooks";
 import { queryClient } from "../../react-query/client";
+import { userKeys } from "../../react-query/keyFactory";
 import { removeToken } from "../../utils/token";
 import "./Header.css";
 
@@ -14,7 +15,8 @@ const Header = ({ toggleSidebar }) => {
   const logoutHandler = () => {
     removeToken();
     privateReq.defaults.headers.authorization = null;
-    queryClient.setQueriesData("user", () => undefined);
+    queryClient.invalidateQueries(userKeys.all());
+    queryClient.removeQueries(userKeys.all());
     navigate("/");
   };
 

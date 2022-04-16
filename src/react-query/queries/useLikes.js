@@ -1,8 +1,17 @@
 import { useQuery } from "react-query";
 import { privateReq } from "../../axios";
+import { useAuth } from "../../hooks";
+import { userKeys } from "../keyFactory";
 
-export const useLikes = () =>
-  useQuery("likes", async () => {
-    const res = await privateReq.get("likes");
-    return res.data;
+const getLikes = async () => {
+  const res = await privateReq.get("likes");
+  return res.data;
+};
+
+export const useLikes = () => {
+  const { isAuth } = useAuth();
+
+  return useQuery(userKeys.likes(), getLikes, {
+    enabled: isAuth
   });
+};
