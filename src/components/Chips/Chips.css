@@ -1,5 +1,4 @@
-.chips {
-  display: flex;
+.chips__container {
   background-color: var(--zinc);
   border-top: 1px solid var(--grey);
   border-bottom: 1px solid var(--grey);
@@ -7,10 +6,20 @@
   position: sticky;
   top: 4.5rem;
   z-index: 20;
+  height: 3.25rem;
+  overflow: hidden;
+}
+
+.chips {
+  position: absolute;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .chips__item {
-  border-radius: 100vh;
+  line-height: 1em;
+  display: inline-block;
+  border-radius: 100vw;
   border: 1px solid var(--black);
 }
 
