@@ -8,7 +8,8 @@ const getUser = async () => {
   return res.data;
 };
 
-export const useUser = () =>
-  useQuery(userKeys.info(), getUser, {
+export const useUser = () => {
+  return useQuery(userKeys.info(), getUser, {
     enabled: !!getToken()
   });
+};

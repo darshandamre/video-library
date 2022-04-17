@@ -1,7 +1,8 @@
-import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { MoreVert, Close } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useOnClickOutside } from "../../hooks";
+import { useRemoveFromHistory } from "../../react-query/mutations";
 import "./Card.css";
 import { CardDialog } from "./CardDialog";
 
@@ -9,6 +10,8 @@ const Card = ({ video }) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const closeDialog = () => setIsDialogOpen(false);
   const dialogWrapperRef = useOnClickOutside(closeDialog, isDialogOpen);
+  const { pathname } = useLocation();
+  const { mutate: removeFromHistory } = useRemoveFromHistory();
 
   useEffect(() => {
     if (isDialogOpen) {
@@ -21,6 +24,14 @@ const Card = ({ video }) => {
 
   return (
     <div className="video flex direction-column">
+      {pathname === "/history" ? (
+        <button
+          className="close-icon flex"
+          title="Remove from history"
+          onClick={() => removeFromHistory(_id)}>
+          <Close />
+        </button>
+      ) : null}
       <Link to={`/video/${_id}`}>
         <img
           className="video__thumbnail"
@@ -33,7 +44,7 @@ const Card = ({ video }) => {
           <Link to={`/video/${_id}`}>{title}</Link>
         </h3>
         <div className="dialog-wrapper ml-auto" ref={dialogWrapperRef}>
-          <MoreVertIcon
+          <MoreVert
             onClick={() => setIsDialogOpen(o => !o)}
             className={`more-icon cursor-pointer my-1 ${
               isDialogOpen ? "more-icon-clicked" : ""

@@ -7,6 +7,7 @@ import "./index.css";
 import { App } from "./App";
 import { queryClient } from "./react-query/client";
 import { makeServer } from "./server";
+import { AuthProvider } from "./context/AuthContext";
 
 // Call make Server
 makeServer();
@@ -15,7 +16,9 @@ ReactDOM.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <App />
+        <AuthProvider>
+          <App />
+        </AuthProvider>
       </BrowserRouter>
       <ReactQueryDevtools />
     </QueryClientProvider>

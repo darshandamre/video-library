@@ -1,7 +1,7 @@
 import { Menu } from "@mui/icons-material";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { privateReq } from "../../axios";
-import { useAuth } from "../../hooks";
+import { useAuth } from "../../context/AuthContext";
 import { queryClient } from "../../react-query/client";
 import { userKeys } from "../../react-query/keyFactory";
 import { removeToken } from "../../utils/token";

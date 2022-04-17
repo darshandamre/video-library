@@ -4,3 +4,6 @@ export { useRemoveFromWatchLater } from "./useRemoveFromWatchLater";
 export { useSignup } from "./useSignup";
 export { useAddToLikes } from "./useAddToLikes";
 export { useRemoveFromLikes } from "./useRemoveFromLikes";
+export { useAddToHistory } from "./useAddToHistory";
+export { useRemoveAllHistory } from "./useRemoveAllHistory";
+export { useRemoveFromHistory } from "./useRemoveFromHistory";

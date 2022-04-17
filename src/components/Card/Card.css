@@ -2,14 +2,25 @@
   background-color: var(--neutral-300);
   border-radius: 5px;
   transition: 0.3s ease-in-out;
+  position: relative;
 }
 
 .video:hover {
   background-color: var(--neutral-200);
 }
 
+.close-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: var(--white);
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 100vw;
+}
+
 .video__thumbnail {
   border-radius: 5px 5px 0 0;
+  width: 100%;
 }
 
 .video__title {
