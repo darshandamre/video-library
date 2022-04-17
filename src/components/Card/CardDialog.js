@@ -1,20 +1,21 @@
 import {
   DeleteOutlined,
   PlaylistAddOutlined,
-  ShareOutlined,
   WatchLaterOutlined
 } from "@mui/icons-material";
 import React, { useLayoutEffect, useRef } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import {
   useAddToWatchLater,
   useRemoveFromLikes,
+  useRemoveFromPlaylist,
   useRemoveFromWatchLater
 } from "../../react-query/mutations";
+import { usePlaylist } from "../../react-query/queries";
 import "./CardDialog.css";
 
-const CardDialog = ({ video, handleClose }) => {
+const CardDialog = ({ video, handleClose, openPlaylistModal }) => {
   const dialogRef = useRef();
   const { isAuth } = useAuth();
   const { mutate: addToWatchLater } = useAddToWatchLater();
@@ -23,6 +24,10 @@ const CardDialog = ({ video, handleClose }) => {
   const location = useLocation();
   const { pathname } = location;
   const navigate = useNavigate();
+
+  const { playlistId } = useParams();
+  const { data } = usePlaylist(playlistId);
+  const { mutate: removeFromPlaylist } = useRemoveFromPlaylist();
 
   useLayoutEffect(() => {
     const dialogDimensions = dialogRef.current.getBoundingClientRect();
@@ -65,12 +70,17 @@ const CardDialog = ({ video, handleClose }) => {
           </div>
         )}
 
-        <div className="dialog-options">
+        <div
+          className="dialog-options"
+          onClick={() => {
+            openPlaylistModal();
+            handleClose();
+          }}>
           <PlaylistAddOutlined className="mx-2" /> Save to Playlist
         </div>
-        <div className="dialog-options">
+        {/* <div className="dialog-options">
           <ShareOutlined className="mx-2" /> Share
-        </div>
+        </div> */}
       </div>
       {pathname === "/liked-videos" ? (
         <>
@@ -83,6 +93,22 @@ const CardDialog = ({ video, handleClose }) => {
                 handleClose();
               }}>
               <DeleteOutlined className="mx-2" /> Remove from liked videos
+            </div>
+          </div>
+        </>
+      ) : null}
+      {pathname.includes("/playlist/") ? (
+        <>
+          <div className="border-top-grey mx-2"></div>
+          <div className="py-1">
+            <div
+              className="dialog-options"
+              onClick={() => {
+                removeFromPlaylist({ playlistId, videoId: video._id });
+                handleClose();
+              }}>
+              <DeleteOutlined className="mx-2" /> Remove from{" "}
+              {data?.playlist?.name}
             </div>
           </div>
         </>

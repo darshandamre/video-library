@@ -1,0 +1,36 @@
+.playlist-modal-wrapper {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.playlist-modal {
+  width: 22rem;
+  background-color: var(--zinc);
+  border-radius: 10px;
+}
+
+.playlist-close {
+  background-color: inherit;
+}
+
+.playlist-option-wrapper {
+  position: sticky;
+  max-height: 15rem;
+  top: 0;
+  bottom: 0;
+  overflow-y: auto;
+}
+
+.playlist-option:hover {
+  background-color: var(--neutral-300);
+}
+
+.playlist-add-icon {
+  margin-left: 1.25rem;
+  margin-right: 0.55rem;
+}

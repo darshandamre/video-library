@@ -1,0 +1,18 @@
+.single-playlist {
+  border: 1px solid var(--zinc);
+  border-radius: 5px;
+  max-width: 100%;
+}
+
+.single-playlist > div {
+  min-width: 0;
+}
+
+.single-playlist-name {
+  min-width: 0;
+  word-wrap: break-word;
+}
+
+.single-playlist .delete {
+  background-color: inherit;
+}

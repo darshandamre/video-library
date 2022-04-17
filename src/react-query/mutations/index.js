@@ -7,3 +7,7 @@ export { useRemoveFromLikes } from "./useRemoveFromLikes";
 export { useAddToHistory } from "./useAddToHistory";
 export { useRemoveAllHistory } from "./useRemoveAllHistory";
 export { useRemoveFromHistory } from "./useRemoveFromHistory";
+export { useCreatePlaylist } from "./useCreatePlaylist";
+export { useDeletePlaylist } from "./useDeletePlaylist";
+export { useAddToPlaylist } from "./useAddToPlaylist";
+export { useRemoveFromPlaylist } from "./useRemoveFromPlaylist";

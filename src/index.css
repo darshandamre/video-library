@@ -78,6 +78,14 @@ a {
   cursor: pointer;
 }
 
+.bg-inherit {
+  background-color: inherit;
+}
+
+.border-top-grey {
+  border-top: 1px solid var(--grey);
+}
+
 .container {
   width: 95%;
   max-width: 1920px;
