@@ -4,8 +4,9 @@ import {
   ThumbUp,
   ThumbUpOutlined
 } from "@mui/icons-material";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { SavePlaylistModal } from "../../components";
 import { useAuth } from "../../context/AuthContext";
 import {
   useAddToHistory,
@@ -19,6 +20,8 @@ const Video = () => {
   const { videoId } = useParams();
   const { data: videoData } = useVideo(videoId);
   const { video } = videoData ?? {};
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const closeModal = () => setIsModalOpen(false);
 
   const { isAuth } = useAuth();
   const location = useLocation();
@@ -70,7 +73,14 @@ const Video = () => {
             <ShareOutlined />
             <span className="video-actions-text ml-1">Share</span>
           </button>
-          <button className="video-actions" title="Save">
+          <button
+            onClick={() => {
+              if (!isAuth)
+                return navigate("/login", { state: { from: location } });
+              setIsModalOpen(true);
+            }}
+            className="video-actions"
+            title="Save">
             <PlaylistAddOutlined />
             <span className="video-actions-text ml-1">Save</span>
           </button>
@@ -81,6 +91,7 @@ const Video = () => {
           <p className="text-base fw-500">{video?.description}</p>
         </div>
       </div>
+      {isModalOpen ? <SavePlaylistModal closeModal={closeModal} /> : null}
     </>
   );
 };

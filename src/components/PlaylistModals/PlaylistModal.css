@@ -1,4 +1,4 @@
-.create-playlist-modal-wrapper {
+.playlist-modal-wrapper {
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.7);
@@ -8,12 +8,21 @@
   justify-content: center;
 }
 
-.create-playlist-modal {
-  min-width: 22rem;
+.playlist-modal {
+  width: 22rem;
   background-color: var(--zinc);
   border-radius: 10px;
 }
 
-.create-playlist-close {
+.playlist-close {
   background-color: inherit;
+}
+
+.playlist-option:hover {
+  background-color: var(--neutral-300);
+}
+
+.playlist-add-icon {
+  margin-left: 1.25rem;
+  margin-right: 0.5rem;
 }
