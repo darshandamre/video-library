@@ -12,10 +12,6 @@ export const categories = [
   },
   {
     _id: uuid(),
-    name: "Classics"
-  },
-  {
-    _id: uuid(),
     name: "Tutorials"
   },
   {

@@ -1,11 +1,10 @@
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { useCategories } from "../../react-query/queries";
 import "./Chips.css";
 
-const Chips = () => {
+const Chips = ({ selectedCategory, setSelectedCategory }) => {
   const { data } = useCategories();
-  const [selected, setSelected] = useState("All");
   const arrowLeftRef = useRef();
   const arrowRightRef = useRef();
   const chipsWrapperRef = useRef();
@@ -77,9 +76,11 @@ const Chips = () => {
           <div
             key={id}
             className={`chips__item ${
-              selected === name ? "chips__item--selected" : ""
+              selectedCategory === name ? "chips__item--selected" : ""
             } cursor-pointer ml-2 py-1 px-2`}
-            onClick={() => setSelected(name)}>
+            onClick={() =>
+              setSelectedCategory(prev => (name === prev ? "All" : name))
+            }>
             {name}
           </div>
         ))}
