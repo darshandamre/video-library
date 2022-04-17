@@ -4,7 +4,7 @@ import { queryClient } from "../client";
 import { userKeys } from "../keyFactory";
 
 const createPlaylist = async playlist => {
-  const res = await privateReq.post("playlist", { playlist });
+  const res = await privateReq.post("playlists", { playlist });
   return res.data;
 };
 

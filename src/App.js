@@ -5,6 +5,7 @@ import {
   Home,
   LikedVideos,
   Login,
+  Playlists,
   SignUp,
   Video,
   WatchLater
@@ -21,6 +22,7 @@ const App = () => {
             <Route path="watch-later" element={<WatchLater />} />
             <Route path="liked-videos" element={<LikedVideos />} />
             <Route path="history" element={<History />} />
+            <Route path="playlists" element={<Playlists />} />
           </Route>
         </Route>
         <Route path="/signup" element={<SignUp />} />

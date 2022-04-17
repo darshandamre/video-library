@@ -1,0 +1,19 @@
+.create-playlist-modal-wrapper {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.create-playlist-modal {
+  min-width: 22rem;
+  background-color: var(--zinc);
+  border-radius: 10px;
+}
+
+.create-playlist-close {
+  background-color: inherit;
+}
