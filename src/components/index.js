@@ -7,3 +7,4 @@ export { SideBar } from "./SideBar/SideBar";
 export { VideoList } from "./VideoList/VideoList";
 export { RequireAuth } from "./RequireAuth";
 export { CreatePlaylistModal } from "./PlaylistModals/CreatePlaylistModal";
+export { PlaylistCard } from "./PlaylistCard/PlaylistCard";

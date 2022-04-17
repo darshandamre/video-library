@@ -1,16 +1,17 @@
 import { Close } from "@mui/icons-material";
 import { useState } from "react";
+import { useOnClickOutside } from "../../hooks";
 import { useCreatePlaylist } from "../../react-query/mutations";
 import "./CreatePlaylistModal.css";
 
 const CreatePlaylistModal = ({ closeModal }) => {
   const [name, setName] = useState("");
-
   const { mutate: createPlaylist } = useCreatePlaylist();
+  const modalRef = useOnClickOutside(closeModal);
 
   return (
     <div className="create-playlist-modal-wrapper">
-      <div className="create-playlist-modal p-2">
+      <div ref={modalRef} className="create-playlist-modal p-2">
         <div className="flex mb-2">
           <h3 className="h3 m-0">Create New Playlist</h3>
           <button
@@ -29,10 +30,11 @@ const CreatePlaylistModal = ({ closeModal }) => {
             }
           }}>
           <label htmlFor="playlist-name">Playlist Name</label>
-          <div className="mt-1">
+          <div className="my-1">
             <input
               value={name}
               onChange={e => setName(e.target.value)}
+              autoFocus
               className="input"
               type="text"
               id="playlist-name"

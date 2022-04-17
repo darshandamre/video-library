@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { CreatePlaylistModal } from "../../components";
+import { CreatePlaylistModal, PlaylistCard } from "../../components";
 import { usePlaylists } from "../../react-query/queries";
+import "./Playlists.css";
 
 const Playlists = () => {
   const { data, isLoading } = usePlaylists();
@@ -28,7 +29,13 @@ const Playlists = () => {
           </Link>{" "}
           and videos to playlist.
         </div>
-      ) : null}
+      ) : (
+        <div className="playlists-container mx-4 my-1">
+          {data?.playlists?.map(playlist => (
+            <PlaylistCard key={playlist._id} playlist={playlist} />
+          ))}
+        </div>
+      )}
       {isModalOpen ? (
         <CreatePlaylistModal
           isModalOpen={isModalOpen}
