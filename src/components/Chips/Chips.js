@@ -34,14 +34,13 @@ const Chips = () => {
         chipsWrapperRef.current.getBoundingClientRect().width;
       const chipsInvisibleWidth = allChipsWidth - chipsWrapperWidth;
       const chipsPosition = chipsRef.current.scrollLeft;
-      const arrowOffset = arrowLeftRef.current.getBoundingClientRect().width;
-      const chipsEndOffset = chipsInvisibleWidth - arrowOffset;
+      const chipsEndOffset = chipsInvisibleWidth - 10;
 
       if (chipsPosition < chipsEndOffset) {
         arrowLeftRef.current.classList.remove("arrow--hidden");
         arrowRightRef.current.classList.remove("arrow--hidden");
       }
-      if (chipsPosition <= arrowOffset) {
+      if (chipsPosition <= 0) {
         arrowLeftRef.current.classList.add("arrow--hidden");
       }
       if (chipsPosition >= chipsEndOffset) {
@@ -66,7 +65,7 @@ const Chips = () => {
         ref={arrowLeftRef}
         onClick={() => {
           chipsRef.current.scrollTo({
-            left: chipsRef.current.scrollLeft - 130,
+            left: chipsRef.current.scrollLeft - 150,
             behavior: "smooth"
           });
         }}
@@ -89,7 +88,7 @@ const Chips = () => {
         ref={arrowRightRef}
         onClick={() => {
           chipsRef.current.scrollTo({
-            left: chipsRef.current.scrollLeft + 130,
+            left: chipsRef.current.scrollLeft + 150,
             behavior: "smooth"
           });
         }}
