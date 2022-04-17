@@ -1,17 +1,23 @@
 import { Add, Close } from "@mui/icons-material";
 import { useState } from "react";
 import { useOnClickOutside } from "../../hooks";
-import { useCreatePlaylist } from "../../react-query/mutations";
+import {
+  useAddToPlaylist,
+  useCreatePlaylist,
+  useRemoveFromPlaylist
+} from "../../react-query/mutations";
 import { usePlaylists } from "../../react-query/queries";
 import "./PlaylistModal.css";
 
-const SavePlaylistModal = ({ closeModal }) => {
+const SavePlaylistModal = ({ closeModal, video }) => {
   const [isNewPlaylist, setIsNewPlaylist] = useState(false);
   const [name, setName] = useState("");
   const modalRef = useOnClickOutside(closeModal);
 
   const { data, isLoading } = usePlaylists();
   const { mutate: createPlaylist } = useCreatePlaylist();
+  const { mutate: addToPlaylist } = useAddToPlaylist();
+  const { mutate: removeFromPlaylist } = useRemoveFromPlaylist();
 
   return (
     <div className="playlist-modal-wrapper">
@@ -35,10 +41,25 @@ const SavePlaylistModal = ({ closeModal }) => {
           ) : (
             <div className="playlist-option-wrapper">
               {data?.playlists?.map(({ _id, name, videos }) => {
+                const isVideoInPlaylist = videos?.some(
+                  ({ _id }) => video._id === _id
+                );
+
                 return (
-                  <div className="playlist-option flex items-center cursor-pointer py-1">
+                  <div
+                    key={_id}
+                    className="playlist-option flex items-center cursor-pointer py-1">
                     <input
                       className="ml-3 mr-2"
+                      checked={isVideoInPlaylist}
+                      onChange={() =>
+                        isVideoInPlaylist
+                          ? removeFromPlaylist({
+                              playlistId: _id,
+                              videoId: video._id
+                            })
+                          : addToPlaylist({ playlistId: _id, video })
+                      }
                       type="checkbox"
                       name={name}
                       id={_id}

@@ -91,7 +91,9 @@ const Video = () => {
           <p className="text-base fw-500">{video?.description}</p>
         </div>
       </div>
-      {isModalOpen ? <SavePlaylistModal closeModal={closeModal} /> : null}
+      {isModalOpen ? (
+        <SavePlaylistModal closeModal={closeModal} video={video} />
+      ) : null}
     </>
   );
 };

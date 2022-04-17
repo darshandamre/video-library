@@ -12,6 +12,13 @@ const addToPlaylist = async ({ playlistId, video }) => {
 
 export const useAddToPlaylist = () =>
   useMutation(addToPlaylist, {
-    onSuccess: data =>
-      queryClient.setQueryData(userKeys.playlist(data.playlist._id), data)
+    onError: err => console.error({ err }),
+    onSuccess: data => {
+      queryClient.setQueryData(userKeys.playlists(), prevData => ({
+        playlists: prevData?.playlists?.map(playlist =>
+          playlist?._id === data?.playlist?._id ? data.playlist : playlist
+        )
+      }));
+      queryClient.setQueryData(userKeys.playlist(data.playlist._id), data);
+    }
   });
