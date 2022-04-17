@@ -1,7 +1,6 @@
 import {
   DeleteOutlined,
   PlaylistAddOutlined,
-  ShareOutlined,
   WatchLaterOutlined
 } from "@mui/icons-material";
 import React, { useLayoutEffect, useRef } from "react";
@@ -14,7 +13,7 @@ import {
 } from "../../react-query/mutations";
 import "./CardDialog.css";
 
-const CardDialog = ({ video, handleClose }) => {
+const CardDialog = ({ video, handleClose, openPlaylistModal }) => {
   const dialogRef = useRef();
   const { isAuth } = useAuth();
   const { mutate: addToWatchLater } = useAddToWatchLater();
@@ -65,12 +64,17 @@ const CardDialog = ({ video, handleClose }) => {
           </div>
         )}
 
-        <div className="dialog-options">
+        <div
+          className="dialog-options"
+          onClick={() => {
+            openPlaylistModal();
+            handleClose();
+          }}>
           <PlaylistAddOutlined className="mx-2" /> Save to Playlist
         </div>
-        <div className="dialog-options">
+        {/* <div className="dialog-options">
           <ShareOutlined className="mx-2" /> Share
-        </div>
+        </div> */}
       </div>
       {pathname === "/liked-videos" ? (
         <>

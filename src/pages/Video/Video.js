@@ -1,6 +1,5 @@
 import {
   PlaylistAddOutlined,
-  ShareOutlined,
   ThumbUp,
   ThumbUpOutlined
 } from "@mui/icons-material";
@@ -69,10 +68,10 @@ const Video = () => {
               {liked ? "liked" : "like"}
             </span>
           </button>
-          <button className="video-actions" title="Share">
+          {/* <button className="video-actions" title="Share">
             <ShareOutlined />
             <span className="video-actions-text ml-1">Share</span>
-          </button>
+          </button> */}
           <button
             onClick={() => {
               if (!isAuth)
