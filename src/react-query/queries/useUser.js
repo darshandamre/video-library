@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 import { privateReq } from "../../axios";
-import { useAuth } from "../../context/AuthContext";
+import { getToken } from "../../utils/token";
 import { userKeys } from "../keyFactory";
 
 const getUser = async () => {
@@ -9,9 +9,7 @@ const getUser = async () => {
 };
 
 export const useUser = () => {
-  const { isAuth } = useAuth();
-
   return useQuery(userKeys.info(), getUser, {
-    enabled: isAuth
+    enabled: !!getToken()
   });
 };

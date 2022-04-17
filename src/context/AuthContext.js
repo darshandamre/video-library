@@ -1,18 +1,14 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import { getToken } from "../utils/token";
+import { createContext, useContext } from "react";
+import { useUser } from "../react-query/queries";
 
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const isAuth = !!getToken();
-  const [value, setValue] = useState({ isAuth });
-
-  useEffect(() => {
-    setValue({ isAuth });
-  }, [isAuth]);
+  const { data, isLoading } = useUser();
+  const isAuth = isLoading || !!data?.user?._id;
 
   return (
-    <AuthContext.Provider value={value}> {children} </AuthContext.Provider>
+    <AuthContext.Provider value={{ isAuth }}>{children}</AuthContext.Provider>
   );
 };
 
