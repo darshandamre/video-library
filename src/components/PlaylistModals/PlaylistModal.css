@@ -18,11 +18,19 @@
   background-color: inherit;
 }
 
+.playlist-option-wrapper {
+  position: sticky;
+  max-height: 15rem;
+  top: 0;
+  bottom: 0;
+  overflow-y: auto;
+}
+
 .playlist-option:hover {
   background-color: var(--neutral-300);
 }
 
 .playlist-add-icon {
   margin-left: 1.25rem;
-  margin-right: 0.5rem;
+  margin-right: 0.55rem;
 }

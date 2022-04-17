@@ -28,13 +28,17 @@ const SavePlaylistModal = ({ closeModal }) => {
 
         <div className="border-top-grey mx-2 pt-1"></div>
         <div className="pb-1">
-          {isLoading
-            ? "loading..."
-            : data?.playlists?.map(({ _id, name, videos }) => {
+          {isLoading ? (
+            "loading..."
+          ) : data?.playlists?.length === 0 ? (
+            <div className="mx-3 py-1">No saved playlists, create one now.</div>
+          ) : (
+            <div className="playlist-option-wrapper">
+              {data?.playlists?.map(({ _id, name, videos }) => {
                 return (
                   <div className="playlist-option flex items-center cursor-pointer py-1">
                     <input
-                      className="ml-3 mr-1"
+                      className="ml-3 mr-2"
                       type="checkbox"
                       name={name}
                       id={_id}
@@ -45,8 +49,11 @@ const SavePlaylistModal = ({ closeModal }) => {
                   </div>
                 );
               })}
+            </div>
+          )}
         </div>
         <div className="border-top-grey mx-2 pt-1"></div>
+
         {isNewPlaylist ? (
           <form
             className="mx-2 mt-1"
