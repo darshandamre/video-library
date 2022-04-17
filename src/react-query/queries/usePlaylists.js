@@ -3,8 +3,8 @@ import { privateReq } from "../../axios";
 import { useAuth } from "../../context/AuthContext";
 import { userKeys } from "../keyFactory";
 
-const getAllPlaylists = () => {
-  const res = privateReq.get("playlists");
+const getAllPlaylists = async () => {
+  const res = await privateReq.get("playlists");
   return res.data;
 };
 
