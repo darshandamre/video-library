@@ -11,9 +11,21 @@
 }
 
 .chips {
+  max-width: 100%;
   position: absolute;
   white-space: nowrap;
   overflow: hidden;
+  overflow-x: auto;
+}
+
+.chips::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+.chips {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .chips__item {
@@ -23,6 +35,40 @@
   border: 1px solid var(--black);
 }
 
+.chips__item:last-child {
+  margin-right: 1rem;
+}
+
 .chips__item--selected {
   background-color: var(--white);
+}
+
+.arrow {
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  cursor: pointer;
+  width: 3rem;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.arrow svg {
+  color: var(--white);
+}
+
+.arrow--left {
+  left: 0;
+}
+
+.arrow--right {
+  right: 0;
+}
+
+.arrow--hidden {
+  display: none;
 }
