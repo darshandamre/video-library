@@ -1,15 +1,30 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { VideoList } from "../../components";
+import { useDeletePlaylist } from "../../react-query/mutations";
 import { usePlaylist } from "../../react-query/queries";
 
 const SinglePlaylist = () => {
   const { playlistId } = useParams();
+  const navigate = useNavigate();
   const { data, isLoading } = usePlaylist(playlistId);
   const { videos, name } = data?.playlist ?? {};
 
+  const { mutate: deletePlaylist } = useDeletePlaylist();
+
   return (
     <>
-      <h3 className="h3 mx-4 my-2">{name}</h3>
+      <div className="flex items-center">
+        <h3 className="h3 mx-4 my-2">{name}</h3>
+        <button
+          onClick={() =>
+            deletePlaylist(playlistId, {
+              onSuccess: () => navigate("/playlists")
+            })
+          }
+          className="btn btn--primary ml-auto mr-4">
+          Delete Playlist
+        </button>
+      </div>
       {isLoading ? (
         "loading..."
       ) : videos?.length === 0 ? (
