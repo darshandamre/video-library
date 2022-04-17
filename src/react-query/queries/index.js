@@ -5,3 +5,5 @@ export { useVideos } from "./useVidoes";
 export { useWatchLater } from "./useWatchLater";
 export { useLikes } from "./useLikes";
 export { useHistory } from "./useHistory";
+export { usePlaylists } from "./usePlaylists";
+export { usePlaylist } from "./usePlaylist";
